@@ -1,0 +1,9 @@
+<div class="container py-5">
+  <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+  <div class="faq-list">
+    <div *ngFor="let faq of faqs" class="faq-item">
+      <h4 class="faq-question">Q: {{ faq.question }}</h4>
+      <p class="faq-answer">A: {{ faq.answer }}</p>
+    </div>
+  </div>
+</div>

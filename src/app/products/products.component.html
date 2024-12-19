@@ -1,0 +1,19 @@
+<div class="container py-5">
+  <h2 class="text-center mb-4">Products in {{ selectedCategory }}</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4"> <!-- Bootstrap grid classes -->
+    <div class="col" *ngFor="let product of filteredProducts">
+      <div class="card product-card">
+        <img [src]="product.imageUrl" class="card-img-top product-image" alt="{{ product.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="product-price"><strong>${{ product.price }}</strong></p>
+          <div class="d-flex justify-content-between">
+            <a [routerLink]="['/product', product.id]" class="btn btn-dark btn-sm">View Details</a>
+            <button (click)="addToCart(product)" class="btn btn-dark btn-sm">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

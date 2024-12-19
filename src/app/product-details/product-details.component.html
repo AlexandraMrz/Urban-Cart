@@ -1,0 +1,89 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <div class="image-container">
+        <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.description }}</p>
+      <p><strong>Price: ${{ product.price }}</strong></p>
+      <button class="btn btn-dark" (click)="addToCart(product)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Product Specifications -->
+  <div class="mt-4">
+    <h3>Specifications</h3>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <th>Category</th>
+          <td>{{ product.category }}</td>
+        </tr>
+        <tr>
+          <th>Material</th>
+          <td>{{ product.material }}</td>
+        </tr>
+        <tr>
+          <th>Brand</th>
+          <td>{{ product.brand }}</td>
+        </tr>
+        <tr>
+          <th>Stock</th>
+          <td>{{ product.stock > 0 ? 'In Stock' : 'Out of Stock' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Customer Reviews -->
+  <div class="mt-4">
+    <h3>Customer Reviews</h3>
+    <div *ngIf="product.reviews && product.reviews.length; else noReviews">
+      <div *ngFor="let review of product.reviews" class="mb-3">
+        <h5>{{ review.author }}</h5>
+        <p><strong>Rating:</strong> {{ review.rating }} / 5</p>
+        <p>{{ review.comment }}</p>
+      </div>
+    </div>
+    <ng-template #noReviews>
+      <p>No reviews yet. Be the first to review this product!</p>
+    </ng-template>
+  </div>
+
+<!-- Product Gallery -->
+<div class="mt-4">
+  <h3>Product Gallery</h3>
+  <div class="d-flex flex-wrap gap-3">
+    <img *ngFor="let img of product.gallery" [src]="img" alt="{{ product.name }}" class="gallery-image">
+  </div>
+</div>
+
+<!-- Delivery and Returns -->
+<div class="delivery-section">
+  <h3>Delivery & Returns</h3>
+  <ul>
+    <li>Estimated delivery time: 3-5 business days</li>
+    <li>Free returns within 30 days</li>
+    <li>Express shipping available at an additional cost</li>
+  </ul>
+</div>
+<!-- FAQ Section -->
+<div class="mt-4 text-center help-section">
+  <h3 class="help-heading">Need Help?</h3>
+  <p class="help-text">Find answers to common questions on our FAQ page.</p>
+  <a routerLink="/faq" class="btn btn-dark help-button">Go to FAQ Page</a>
+</div>
+
+
+  <!-- Share Buttons -->
+<div class="share-section mt-4">
+  <h3 class="share-heading">Share This Product</h3>
+  <div class="share-buttons">
+    <button class="btn btn-outline-primary btn-sm me-2"><i class="bi bi-facebook"></i> Facebook</button>
+    <button class="btn btn-outline-info btn-sm me-2"><i class="bi bi-twitter"></i> Twitter</button>
+    <button class="btn btn-outline-danger btn-sm"><i class="bi bi-pinterest"></i> Pinterest</button>
+  </div>
+</div>
